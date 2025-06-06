@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h2>Electricity bill calculator</h2>
+<form action= "" method="POST">
+    {% csrf_token %}
+    <label>Enter units:</label>
+    <input type="number" name="units"required>
+    <button type="submit">calculate</button>
+
+</form>
+   {% if total_bill is not None %}
+
+<h3>Total Bill Amount: rupees
+    {{ total_bill }}
+    {% endif %}
+    
+</h3>
+<body>
+    
+</body>
+</html>

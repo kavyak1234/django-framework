@@ -27,7 +27,14 @@ urlpatterns = [
     path('sample4',views.sample4,name='sample4'),
     path('sample5',views.sample5,name='sample5'),
     path('sample6',views.sample6,name='sample6'),
-    path('form',views.form,name='form')
+    path('form',views.form,name='form'),
+    path('company',views.company,name='company'),
+    path('electricity',views.electricity,name='electricity'),
+    path('dayname/', views.day_name, name='day_name'),
+    path('monument/', views.city_monument, name='city_monument'),
+    path('check-last-digit/', views.check_last_digit, name='check_last_digit'),
+
+
     
     
 
