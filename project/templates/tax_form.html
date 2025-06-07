@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bike Road Tax Calculator</title>
+</head>
+<body>
+    <h2>Bike Road Tax Calculator</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calculate Tax</button>
+    </form>
+
+    {% if tax is not None %}
+        <h3>Cost Price: Rs {{ cost }}</h3>
+        <h3>Road Tax to be Paid: Rs {{ tax }}</h3>
+    {% endif %}
+</body>
+</html>

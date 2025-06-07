@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('python',views.sample,name='sample'),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('dayname/', views.day_name, name='day_name'),
     path('monument/', views.city_monument, name='city_monument'),
     path('check-last-digit/', views.check_last_digit, name='check_last_digit'),
+    path('calculate_tax', views.calculate_tax, name='calculate_tax'),
 
 
     
@@ -40,6 +42,5 @@ urlpatterns = [
 
 
 ]
-
 
 

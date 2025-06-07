@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 # Create your views here.
 def sample(req):
     print("welcome")
@@ -94,6 +95,25 @@ def check_last_digit(request):
         else:
             result = "Please enter a valid number."
     return render(request, 'last_digit_check.html', {'result': result})
+
+
+def calculate_tax(request):
+    tax = None
+    cost = None
+    if request.method == 'POST':
+        form = BikeCostForm(request.POST)
+        if form.is_valid():
+            cost = form.cleaned_data['cost_price']
+            if cost > 100000:
+                tax = cost * 0.15
+            elif cost > 50000:
+                tax = cost * 0.10
+            else:
+                tax = cost * 0.05
+    else:
+        form = BikeCostForm()
+
+    return render(request, 'taxapp/tax_form.html', {'form': form, 'tax': tax, 'cost': cost})
 
 
 
