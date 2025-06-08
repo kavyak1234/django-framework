@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Bonus Calculator</title>
+</head>
+<body>
+    <h2>Check Your Bonus</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Salary (Rs):</label>
+        <input type="number" name="salary" step="0.01" required><br><br>
+
+        <label>Years of Service:</label>
+        <input type="number" name="years" required><br><br>
+
+        <button type="submit">Calculate Bonus</button>
+    </form>
+
+    {% if bonus is not None %}
+        <h3>Years of Service: {{ years }}</h3>
+        <h3>Salary: Rs {{ salary }}</h3>
+        <h3>Bonus: Rs {{ bonus }}</h3>
+    {% endif %}
+</body>
+</html>
+

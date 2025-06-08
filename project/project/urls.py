@@ -29,18 +29,19 @@ urlpatterns = [
     path('sample5',views.sample5,name='sample5'),
     path('sample6',views.sample6,name='sample6'),
     path('form',views.form,name='form'),
-    path('company',views.company,name='company'),
+    path('bonus/', views.bonus_view, name='bonus'),
     path('electricity',views.electricity,name='electricity'),
     path('dayname/', views.day_name, name='day_name'),
     path('monument/', views.city_monument, name='city_monument'),
     path('check-last-digit/', views.check_last_digit, name='check_last_digit'),
-    path('calculate_tax', views.calculate_tax, name='calculate_tax'),
-
-
-    
-    
-
-
+    path('bike-tax/', views.bike_tax_view, name='bike_tax'),
 ]
+
+
+    
+    
+
+
+
 
 

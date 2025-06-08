@@ -29,14 +29,19 @@ def form(request):
         print('email',email)
         print('phno',phone)
     return render(request,'inputform.html') 
-def company(request):
+def bonus_view(request):
+    bonus = None
+    salary = None
+    years = None
     if request.method == 'POST':
-        salary = int(request.POST['salary'])
-        year = int(request.POST['year'])
-        if year >=5:
-            net_salary = salary*0.05+salary
-            return render(request,'company.html',{'salary' :net_salary})
-    return render(request,'company.html')
+        salary = float(request.POST.get('salary'))
+        years = int(request.POST.get('years'))
+
+        if years > 5:
+            bonus = salary * 0.05
+        else:
+            bonus = 0
+    return render(request, 'bonus.html', {'bonus': bonus, 'salary': salary, 'years': years})
 def electricity(request):
     bill = None
 
@@ -97,23 +102,18 @@ def check_last_digit(request):
     return render(request, 'last_digit_check.html', {'result': result})
 
 
-def calculate_tax(request):
+def bike_tax_view(request):
     tax = None
     cost = None
     if request.method == 'POST':
-        form = BikeCostForm(request.POST)
-        if form.is_valid():
-            cost = form.cleaned_data['cost_price']
-            if cost > 100000:
-                tax = cost * 0.15
-            elif cost > 50000:
-                tax = cost * 0.10
-            else:
-                tax = cost * 0.05
-    else:
-        form = BikeCostForm()
-
-    return render(request, 'taxapp/tax_form.html', {'form': form, 'tax': tax, 'cost': cost})
+        cost = float(request.POST.get('cost_price'))
+        if cost > 100000:
+            tax = cost * 0.15
+        elif cost > 50000:
+            tax = cost * 0.10
+        else:
+            tax = cost * 0.05
+    return render(request, 'bike_tax.html', {'tax': tax, 'cost': cost})
 
 
 

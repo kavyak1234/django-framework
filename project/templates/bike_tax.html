@@ -4,10 +4,11 @@
     <title>Bike Road Tax Calculator</title>
 </head>
 <body>
-    <h2>Bike Road Tax Calculator</h2>
+    <h2>Enter Bike Cost Price to Calculate Tax</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <label for="cost_price">Cost Price (Rs):</label>
+        <input type="number" name="cost_price" required>
         <button type="submit">Calculate Tax</button>
     </form>
 
