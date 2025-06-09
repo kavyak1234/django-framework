@@ -47,7 +47,7 @@ def electricity(request):
 
     if request.method == 'POST':
         units_input = request.POST.get('units')
-        if units_input:  # Make sure it's not None or empty
+        if units_input:  
             units = int(units_input)
 
             if units <= 100:
@@ -91,7 +91,7 @@ def check_last_digit(request):
     result = ''
     if request.method == 'POST':
         number = request.POST.get('number')
-        if number.isdigit():  # make sure input is a valid number
+        if number.isdigit():  
             last_digit = int(number[-1])
             if last_digit % 3 == 0:
                 result = f"The last digit {last_digit} is divisible by 3."
