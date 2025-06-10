@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import student
 
 
 # Create your views here.
@@ -114,6 +115,10 @@ def bike_tax_view(request):
         else:
             tax = cost * 0.05
     return render(request, 'bike_tax.html', {'tax': tax, 'cost': cost})
+
+def students(request):
+    data = student.objects.all()
+    return render(request,'shop.html',{'students': data})
 
 
 

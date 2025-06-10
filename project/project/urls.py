@@ -35,7 +35,9 @@ urlpatterns = [
     path('monument/', views.city_monument, name='city_monument'),
     path('check-last-digit/', views.check_last_digit, name='check_last_digit'),
     path('bike-tax/', views.bike_tax_view, name='bike_tax'),
+    path('students',views.students, name='students')
 ]
+
 
 
     
