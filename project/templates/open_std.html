@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Open single std</h1>
+    <tr>
+    <th>Rollno</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Image</th>
+    <tr>
+        <tr>
+            <td>{{student.Rollno}}</td>
+            <td>{{student.Name}}</td>
+            <td>{{student.Age}}</td>
+            <td>{{student.Email}}</td>
+            <td><img src={{student.Image.url}} style="width: 100px;height: 100px;" alt=""></td>
+            <td><a href="../edit_std">Edit</a></td>
+            <td><a href="">Delete</a></td>
+        </tr>
+</body>
+</html>

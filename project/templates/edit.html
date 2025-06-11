@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit student</h1>
+    <form action="" method="POST">
+        {% csrf token %}
+        <input type="number" name="Rollno" placeholder="Enter Rolle" id="" value="{{student.Rollno}}">
+        <input type="text" name="Name" placeholder="Enter Name" id="" value="{{student.Name}}">
+        <input type="email" name="Email" placeholder="Enter Email" id="" value="{{student.Email}}">
+        <input type="text" name="Age" placeholder="Enter Age" id="" value="{{student.Age}}">
+        <input type="file" name="">
+    </form>
+</body>
+</html>

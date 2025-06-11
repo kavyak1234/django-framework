@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import student
+from .models import FoodItem
+
 
 
 # Create your views here.
@@ -120,8 +122,17 @@ def students(request):
     data = student.objects.all()
     return render(request,'shop.html',{'students': data})
 
+def show_food_items(request):
+    items = FoodItem.objects.all()
+    return render(request,'myshop.html', {'items': items})
 
-
-
-
+def open_student(request,id):
+    print(id)
+    data = student.objects.get(pk=id)
+    print(data)
+    return render(request,'open_std.html',{'student':data})
+def edit_std(request):
+    data = student.object.get(pk=id)
+    print(data)
+    return render(request,'edit.html',{'student':data})
 
