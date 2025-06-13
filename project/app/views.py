@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import student
-from .models import FoodItem
+
 
 
 
@@ -122,17 +122,37 @@ def students(request):
     data = student.objects.all()
     return render(request,'shop.html',{'students': data})
 
-def show_food_items(request):
-    items = FoodItem.objects.all()
-    return render(request,'myshop.html', {'items': items})
 
 def open_student(request,id):
     print(id)
     data = student.objects.get(pk=id)
     print(data)
     return render(request,'open_std.html',{'student':data})
-def edit_std(request):
-    data = student.object.get(pk=id)
-    print(data)
+def edit_std(request,id):
+    data = student.objects.get(pk=id)
+    if request.method == 'POST':
+        data.Rollno = request.POST['Rollno']
+        data.Name = request.POST['Name']
+        data.Email = request.POST['Email']
+        data.Age = request.POST['Age']
+        if request.FILES:
+             data.Image = request.FILES['Image']
+        data.save()
+        return redirect(students)
     return render(request,'edit.html',{'student':data})
+def delete_std(request,id):
+        data = student.objects.get(pk=id)
+        data.delete()
+        return redirect(students)
+def add_std(request):
+    if request.method=='POST':
+        roll = request.POST['Rollno']
+        name =  request.POST['Name']
+        email = request.POST['Email']
+        age = request.POST['Age']
+        image =request.FILES['Image']
+        data = student.objects.create(Rollno=roll,Email=email,Name=name,Age=age,Image=image)
+        data.save()
+        return redirect(students)
+    return render(request,'add_std.html')
 

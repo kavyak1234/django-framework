@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="number" name="Rollno" placeholder="Enter Rolle " id="">
+    <input type="text" name="Name" placeholder="Enter Name" id="">
+    <input type="Email" name="Email" placeholder="Enter Email" id="">
+    <input type="number" name="Age" placeholder="Enter Age" id="">
+    <input type="file" name="Image" id="">
+    <input type="submit" value="button">
+    </form>
+    
+    
+</body>
+</html>

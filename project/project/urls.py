@@ -38,9 +38,10 @@ urlpatterns = [
     path('check-last-digit/', views.check_last_digit, name='check_last_digit'),
     path('bike-tax/', views.bike_tax_view, name='bike_tax'),
     path('students',views.students, name='students'),
-    path('',views.show_food_items,name='show_food_items'),
     path('open_std/<id>',views.open_student,name='openstudent'),
-    path('edit_sta/<id>',views.std,name='edit')
+    path('edit_std/<id>',views.edit_std,name='edit'),
+    path('delete_std/<id>',views.delete_std,name='delete'),
+    path('add_std',views.add_std,name='add_std')
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

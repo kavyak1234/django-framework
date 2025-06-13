@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Open single std</h1>
+    <table>
     <tr>
     <th>Rollno</th>
     <th>Name</th>
@@ -20,8 +21,11 @@
             <td>{{student.Age}}</td>
             <td>{{student.Email}}</td>
             <td><img src={{student.Image.url}} style="width: 100px;height: 100px;" alt=""></td>
-            <td><a href="../edit_std">Edit</a></td>
-            <td><a href="">Delete</a></td>
+            <td><a href="../edit_std/{{ student.pk }}"{{student}}>Edit</a></td>
+            <td><a href="../delete_std/{{student.pk}}">Delete</a></td>
+            <td><a href="../add_std/{{student.pk}}">Add</a></td>
+
         </tr>
+        </table>
 </body>
 </html>
