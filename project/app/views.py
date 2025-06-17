@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import student
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 
@@ -155,4 +157,21 @@ def add_std(request):
         data.save()
         return redirect(students)
     return render(request,'add_std.html')
+
+def user_login(request):
+    return render(request,'login.html')
+def user_registration(request):
+    if request.method =='POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+        data = User.objects.create_user(username=email,password=password,email=email,first_name=name)
+        data.save()
+        messages.success(request, "Registration completed.")
+        return redirect('login')
+    return render(request,'register.html')
+def user_home(request):
+    return render(request,'home.html')
+
+
 
