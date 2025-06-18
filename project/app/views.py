@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import student
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
 
 
 
@@ -159,6 +160,20 @@ def add_std(request):
     return render(request,'add_std.html')
 
 def user_login(request):
+    if 'user' in request.session:
+        return render(user_home)
+    if request.method == 'POST':
+        username = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request,username=username,password=password)
+        if user is not None:
+            print('hello',user)
+            login(request,user)
+            request.session['user'] = username #create session
+            return redirect(user_home)
+        else:
+                messages.warning(request,'Invalid username or password')
+                return redirect(user_login)
     return render(request,'login.html')
 def user_registration(request):
     if request.method =='POST':
@@ -171,7 +186,16 @@ def user_registration(request):
         return redirect('login')
     return render(request,'register.html')
 def user_home(request):
-    return render(request,'home.html')
-
+    if 'user' in request.session:
+         return render(request,'home.html')
+    else:
+        return redirect('login')
+def user_logout(request):
+    if 'user' in request.session:
+        del request.session['user']
+        logout(request)
+        return redirect('login')
+    else:
+        return redirect('login')
 
 
