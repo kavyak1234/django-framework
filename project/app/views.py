@@ -4,6 +4,8 @@ from .models import student
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from.forms import student_Normal_form,ModelForm
+from .models import samplestudent
 
 
 
@@ -197,5 +199,28 @@ def user_logout(request):
         return redirect('login')
     else:
         return redirect('login')
+
+def add_std(req):
+    form = student_Normal_form()
+    if req.method == 'POST':
+        form1 = student_Normal_form(req.POST)
+        if form1.is_valid():
+            roll = form1.cleaned_data['roll']
+            name = form1.cleaned_data['name']
+            age = form1.cleaned_data['age']
+            print(roll,name,age)
+            data = samplestudent.objects.create(roll=roll,name=name,age=age)
+            data.save()
+            return redirect(add_std)
+    return render(req,'adds_std.html',{'form':form})
+
+def add_std1(req):
+    form = ModelForm()
+    if req.method=='POST' :
+        form1 = ModelForm(req.POST)
+        if form1.is_valid():
+            form1.save()
+        return redirect(add_std1)
+    return render(req,'add_std1.html',{'form':form})
 
 

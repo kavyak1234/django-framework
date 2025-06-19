@@ -12,3 +12,7 @@ class student(models.Model):
     def __str__ (self):
         return self.Name
 
+class samplestudent(models.Model):
+    roll = models.IntegerField()
+    name = models.CharField()
+    age = models.IntegerField()
