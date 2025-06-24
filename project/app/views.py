@@ -223,8 +223,13 @@ def add_std1(req):
         return redirect(add_std1)
     return render(req,'add_std1.html',{'form':form})
 
-def viewpost(request):
+def addpost(request):
     if 'user' in request.session:
-        return render (request,'viewpost.html')
+        if request.method == 'POST':
+            title = req.post['title']
+            username = request.session['user']
+            user_data = user.objects.get(username=username)
+            data.posts.objects.create(user_dtls=user_data)
+        return render (request,'add_post.html')
     else:
         return redirect(user_login)

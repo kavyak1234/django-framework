@@ -28,3 +28,5 @@ class commends(models.Model):
     text = models.TextField()
     user_dtls = models.ForeignKey(User,on_delete=models.CASCADE)
     post_dtls =models.ForeignKey(posts,on_delete=models.CASCADE)
+
+
