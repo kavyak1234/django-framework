@@ -223,4 +223,8 @@ def add_std1(req):
         return redirect(add_std1)
     return render(req,'add_std1.html',{'form':form})
 
-
+def viewpost(request):
+    if 'user' in request.session:
+        return render (request,'viewpost.html')
+    else:
+        return redirect(user_login)
