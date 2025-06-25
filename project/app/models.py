@@ -21,7 +21,7 @@ class posts(models.Model):
     title = models.TextField()
     tags = models.TextField()
     file = models.FileField()
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
     user_dtls = models.ForeignKey(User,on_delete=models.CASCADE)
 
 class commends(models.Model):

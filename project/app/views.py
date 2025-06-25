@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from.forms import student_Normal_form,ModelForm
 from .models import samplestudent
+from .models import posts
 
 
 
@@ -226,10 +227,15 @@ def add_std1(req):
 def addpost(request):
     if 'user' in request.session:
         if request.method == 'POST':
-            title = req.post['title']
+            title = request.POST['title']
+            tag = request.POST['tag']
+            date = request.POST['date']
             username = request.session['user']
-            user_data = user.objects.get(username=username)
-            data.posts.objects.create(user_dtls=user_data)
+            user_data = User.objects.get(username=username)
+            data = posts.objects.create(user_dtls=user_data,title=title,tags=tag,date=date)
         return render (request,'add_post.html')
     else:
         return redirect(user_login)
+
+def viewpost(request):
+    return render(request, 'viewpost.html')
